@@ -10,9 +10,7 @@ use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of categories.
-     */
+
     public function index(Request $request): View
     {
         $query = Category::with('parent');
@@ -35,9 +33,6 @@ class CategoryController extends Controller
         return view('admin.categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new category.
-     */
     public function create(): View
     {
         $parentCategories = Category::orderBy('name')->get();
@@ -45,9 +40,6 @@ class CategoryController extends Controller
         return view('admin.categories.create', compact('parentCategories'));
     }
 
-    /**
-     * Store a newly created category in storage.
-     */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -78,16 +70,45 @@ class CategoryController extends Controller
             ->with('success', 'Category created successfully!');
     }
 
-    /**
-     * Remove the specified category from storage.
-     */
-    public function destroy(Category $category): RedirectResponse
+    public function edit(Category $category): View
     {
-        // Delete image if exists
-        if ($category->image && file_exists(public_path($category->image))) {
-            @unlink(public_path($category->image));
+        $parentCategories = Category::where('id', '!=', $category->id)->orderBy('id')->get();
+
+        return view('admin.categories.edit', compact('category', 'parentCategories'));
+    }
+
+    public function update(Request $request, Category $category): RedirectResponse
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'slug' => ['nullable', 'string', 'max:255', 'unique:categories,slug,' . $category->id],
+            'parent_id' => ['nullable', 'exists:categories,id'],
+            'status' => ['required', 'in:Active,Draft,Inactive'],
+        ]);
+
+        // Auto-generate unique slug if not provided
+        if (empty($validated['slug'])) {
+            $baseSlug = Str::slug($validated['name']);
+            $slug = $baseSlug;
+            $count = 1;
+            while (Category::where('slug', $slug)->where('id', '!=', $category->id)->exists()) {
+                $slug = "{$baseSlug}-{$count}";
+                $count++;
+            }
+            $validated['slug'] = $slug;
+        } else {
+            $validated['slug'] = Str::slug($validated['slug']);
         }
 
+        $category->update($validated);
+
+        return redirect()
+            ->route('admin.category.index')
+            ->with('success', 'Category updated successfully!');
+    }
+
+    public function destroy(Category $category): RedirectResponse
+    {
         $category->delete();
 
         return redirect()

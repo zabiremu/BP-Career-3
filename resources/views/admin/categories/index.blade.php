@@ -136,6 +136,10 @@
                                     @endif
                                 </td>
                                 <td class="py-3 text-end">
+                                    <a href="{{ route('admin.category.edit', $category) }}"
+                                        class="text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300">
+                                        Edit
+                                    </a>
                                     <form action="{{ route('admin.category.destroy', $category) }}" method="POST"
                                         onsubmit="return confirm('Are you sure you want to delete this category?');"
                                         class="inline-block">
