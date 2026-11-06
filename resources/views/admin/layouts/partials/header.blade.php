@@ -261,7 +261,6 @@
                             <div class="my-0.5 h-px bg-gray-100 last-of-type:hidden dark:bg-gray-700">
                             </div>
 
-                            <!-- Item 4 -->
                             <a href="javascript:void(0)"
                                 class="group/dropdown-menu-item flex items-start gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/5">
                                 <div class="relative flex size-10 shrink-0 select-none">
@@ -295,7 +294,6 @@
                             <div class="my-0.5 h-px bg-gray-100 last-of-type:hidden dark:bg-gray-700">
                             </div>
 
-                            <!-- Item 5 -->
                             <a href="javascript:void(0)"
                                 class="group/dropdown-menu-item flex items-start gap-3 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-white/5">
                                 <div class="relative flex size-10 shrink-0 select-none">

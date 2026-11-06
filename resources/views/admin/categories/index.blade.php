@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <!-- Breadcrumb Start -->
     <div class="col-span-12" x-data="{ pageTitle: 'Categories' }">
         <div class="flex flex-wrap items-center justify-between gap-3">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle">
@@ -27,9 +26,7 @@
             </nav>
         </div>
     </div>
-    <!-- Breadcrumb End -->
 
-    <!-- Success Message Notification -->
     @if (session('success'))
         <div class="col-span-12 rounded-xl border border-green-200 bg-green-50 p-4 dark:border-green-800/50 dark:bg-green-900/20"
             x-data="{ show: true }" x-show="show">
@@ -49,7 +46,6 @@
         </div>
     @endif
 
-    <!-- Category Table Card Start -->
     <div class="col-span-12">
         <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3">
             <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -169,5 +165,4 @@
             @endif
         </div>
     </div>
-    <!-- Category Table Card End -->
 @endsection

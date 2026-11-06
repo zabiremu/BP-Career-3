@@ -49,7 +49,6 @@ class CategoryController extends Controller
             'status' => ['required', 'in:Active,Draft,Inactive'],
         ]);
 
-        // Auto-generate unique slug if not provided
         if (empty($validated['slug'])) {
             $baseSlug = Str::slug($validated['name']);
             $slug = $baseSlug;
@@ -86,7 +85,6 @@ class CategoryController extends Controller
             'status' => ['required', 'in:Active,Draft,Inactive'],
         ]);
 
-        // Auto-generate unique slug if not provided
         if (empty($validated['slug'])) {
             $baseSlug = Str::slug($validated['name']);
             $slug = $baseSlug;

@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <!-- Breadcrumb Start -->
     <div class="col-span-12" x-data="{ pageTitle: 'Edit Category' }">
         <div class="flex flex-wrap items-center justify-between gap-3">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90" x-text="pageTitle">
@@ -38,9 +37,9 @@
             </nav>
         </div>
     </div>
-    <!-- Breadcrumb End -->
 
-    <!-- Validation Errors Alert -->
+
+
     @if ($errors->any())
         <div class="col-span-12 rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-800/50 dark:bg-red-900/20">
             <div class="flex items-start gap-3">
@@ -59,10 +58,10 @@
         </div>
     @endif
 
-    <!-- Form Card Start -->
+
     <div class="col-span-12">
         <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-            <!-- Card Header -->
+
             <div class="flex flex-wrap items-center justify-between border-b border-gray-100 px-4 py-4 sm:px-6 dark:border-gray-800">
                 <div>
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
@@ -81,12 +80,10 @@
                 </a>
             </div>
 
-            <!-- Card Body Form -->
             <form action="{{ route('admin.category.update', $category->id) }}" method="POST" class="p-4 sm:p-6">
                 @csrf
                 @method('PUT')
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <!-- Basic Input: Category Name -->
                     <div>
                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                             Category Name <span class="text-red-500">*</span>
@@ -98,7 +95,6 @@
                         @enderror
                     </div>
 
-                    <!-- Input with Placeholder: Slug -->
                     <div>
                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                             Category Slug <span class="text-xs text-gray-400">(Auto-generated if left blank)</span>
@@ -110,7 +106,6 @@
                         @enderror
                     </div>
 
-                    <!-- Select Input: Parent Category -->
                     <div>
                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                             Parent Category
@@ -136,7 +131,6 @@
                         @enderror
                     </div>
 
-                    <!-- Select Input: Status -->
                     <div>
                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                             Status <span class="text-red-500">*</span>
@@ -160,7 +154,6 @@
                     </div>
                 </div>
 
-                <!-- Form Action Buttons -->
                 <div class="mt-8 flex flex-wrap items-center justify-end gap-3 border-t border-gray-100 pt-5 dark:border-gray-800">
                     <a href="{{ route('admin.category.index') }}"
                         class="inline-flex items-center justify-center rounded-[10px] border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800">
@@ -174,5 +167,4 @@
             </form>
         </div>
     </div>
-    <!-- Form Card End -->
 @endsection
