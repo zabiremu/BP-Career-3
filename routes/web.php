@@ -4,7 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index')->name('admin.dashboard');
+Route::view('/', 'admin.dashboard.index')->name('admin.dashboard');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.category.create');
@@ -13,5 +13,9 @@ Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('admin.category.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
+Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('admin.products.store');
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');

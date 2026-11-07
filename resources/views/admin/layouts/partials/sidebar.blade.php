@@ -81,19 +81,30 @@
                                 class="menu-dropdown mt-2 flex animate-in flex-col gap-1 pl-9 duration-300 fade-in-0 slide-in-from-top-1 rtl:pr-9 rtl:pl-0">
                                 <li>
                                     <a href="{{ route('admin.dashboard') }}" class="group menu-dropdown-item"
-                                        :class="page === 'ecommerce' ? 'menu-dropdown-item-active' :
+                                        :class="page === 'admin.dashboard' ? 'menu-dropdown-item-active' :
                                             'menu-dropdown-item-inactive'"
-                                        x-text="$t('sidebar.items.ecommerceHome')">
+                                        >
                                         Dashboard
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="{{ route('admin.category.index') }}" class="group menu-dropdown-item"
-                                        :class="page === 'Categories' ? 'menu-dropdown-item-active' :
+                                        :class="page === 'admin.category.index' ? 'menu-dropdown-item-active' :
                                             'menu-dropdown-item-inactive'"
                                         >
                                          Categories
+
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="{{ route('admin.products.index') }}" class="group menu-dropdown-item"
+                                        :class="page === 'admin.products.index' ? 'menu-dropdown-item-active' :
+                                            'menu-dropdown-item-inactive'"
+                                        >
+                                         Products
 
                                     </a>
                                 </li>
